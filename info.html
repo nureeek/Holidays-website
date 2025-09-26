@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Travel & Culture Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    header {
+      grid-area: header;
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    nav a {
+      margin-right: 15px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background: #f4f4f4;
+      padding: 1rem;
+    }
+
+    .about-us {
+      grid-area: main;
+      padding: 2rem;
+    }
+
+    footer {
+      grid-area: footer;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .team {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      flex: 1;
+      min-width: 200px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+
+    <header>
+      <h1>About Our Project</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="info.html">About</a>
+        <a href="mountains.html">Mountains</a>
+        <a href="lakes.html">Lakes</a>
+        <a href="city-tours.html">City Tours</a>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="mountains.html">Mountains</a></li>
+        <li><a href="lakes.html">Lakes</a></li>
+        <li><a href="city-tours.html">City Tours</a></li>
+      </ul>
+    </aside>
+
+    <section class="about-us">
+      <h2>Our Mission</h2>
+      <p>Give unforgettable emotions for good prices.</p>
+
+      <h2>Why Travel?</h2>
+      <p>Travel is an investment in memories that last a lifetime.</p>
+
+      <h2>Meet Our Team</h2>
+      <div class="team">
+        <div class="card">
+          <h3>Adilov Nurkeldi</h3>
+          <p>Easily finds common ground, positive, optimistic</p>
+          <p>+7773833478</p>
+        </div>
+        <div class="card">
+          <h3>Akbar Khalili</h3>
+          <p>Expert, reliable, and passionate about showing travelers the hidden gems of the region</p>
+          <p>+7773833498</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Your Travel Project. All rights reserved.</p>
+      <p>
+        <a href="#">Facebook</a> | 
+        <a href="#">Instagram</a> | 
+        <a href="#">Telegram</a>
+      </p>
+      <p>Travel & Culture Hub, Team Members: Adilov Nurkeldi, Akbar Khalili</p>
+    </footer>
+
+  </div>
+</body>
+</html>
