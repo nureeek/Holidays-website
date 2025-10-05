@@ -1,0 +1,62 @@
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: url("original.jpg") no-repeat center/cover;
+  color: #eeeeee;
+  height: 400px;
+}
+.hero h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.services {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.service-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service {
+  display: block;
+  background: #e67e22;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 150px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.service:hover { background: #d35400; }
+
+.testimonials {
+  padding: 60px 20px;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.testimonial {
+  margin: 20px auto;
+  max-width: 500px;
+  font-style: italic;
+}
+
+.testimonial span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2c3e50;
+}

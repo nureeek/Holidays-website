@@ -1,0 +1,38 @@
+.lake-intro {
+  padding: 60px 20px;
+  background: linear-gradient(to right, #6dd5fa, #a1ffce);
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.lake-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  color: #2c3e50;
+}
+
+.lake-text {
+  max-width: 500px;
+}
+
+.lake-text h2 {
+  font-size: 2.4rem;
+  color: #1e6f5c;
+  margin-bottom: 15px;
+}
+.lake-text p {
+  font-size: 1.1rem;
+}
+
+.lake-img img {
+  width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+}
+
+.lake-img img:hover { transform: scale(1.05); }
