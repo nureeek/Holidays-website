@@ -1,0 +1,77 @@
+
+.mountain-hero {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+  text-align: center;
+  color: white;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.mountain-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.mountain-hero p {
+  font-size: 1.2rem;
+}
+
+
+.mountain-info {
+  padding: 60px 20px;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-img img {
+  width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+}
+
+.info-img img:hover {
+  transform: scale(1.05);
+}
+
+.info-text {
+  max-width: 550px;
+}
+
+.info-text h3 {
+  color: #2980b9;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+/*Bootstrap Carousel applied */
+.mountain-carousel img {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+
+@media (max-width: 768px) {
+  .info-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-img img {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .info-text {
+    max-width: 100%;
+    text-align: center;
+  }
+}
