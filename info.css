@@ -121,3 +121,68 @@ header {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+
+/* === Accordion Section Layout Fix === */
+.accordion {
+  max-width: 800px;              /* ограничиваем ширину */
+  margin: 60px auto 80px auto;   /* центрируем и добавляем отступы сверху/снизу */
+  text-align: left;              /* выравниваем текст по левому краю */
+  background: #fff;              /* фон для контраста */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.accordion h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #e67e22;
+}
+
+.accordion-item {
+  margin-bottom: 15px;
+}
+
+.accordion-item h3 {
+  background: #e67e22;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.accordion-item h3:hover {
+  background: #d35400;
+}
+
+.accordion-item p {
+  display: none;
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-left: 4px solid #e67e22;
+  margin-top: 5px;
+}
+
+.accordion-item p.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .accordion {
+    padding: 20px;
+    margin: 40px 10px 60px 10px;
+  }
+  .accordion-item h3 {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+

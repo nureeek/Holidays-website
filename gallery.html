@@ -13,9 +13,7 @@
 <body>
     
   <div class="grid-container">
-</html>
 <header>
-        <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="index.html">Travel & Culture Hub</a>
@@ -38,7 +36,7 @@
   </nav>
 </header>
 
-    </header>
+    
 
     <aside class="sidebar">
       <h3>Quick Links</h3>
@@ -49,7 +47,7 @@
         <li><a href="gallery.html">Gallery</a></li>
       </ul>
     </aside>
-
+<main>
 <section class="container my-5">
   <h2 class="text-center mb-4">Travel Memories Carousel</h2>
 
@@ -188,16 +186,31 @@
   </div>
 </section>
 
+<section class="subscribe text-center my-5">
+  <h2 class="mb-3">Subscribe for Travel Updates</h2>
+  <button class="btn btn-primary btn-lg" onclick="openPopup()">Subscribe</button>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Your Travel Project. All rights reserved.</p>
-    <p>
-      <a href="#">Facebook</a> | 
-      <a href="#">Instagram</a> | 
-      <a href="#">Telegram</a>
-    </p>
-    <p>Travel & Culture Hub, Team Members: Adilov Nurkeldi, Akbar Khalili</p>
-  </footer>
-</body>
-</html>
+<div id="popup" class="popup-overlay" onclick="closePopup()">
+  <div class="popup-content" onclick="event.stopPropagation()">
+    <h3>Stay Updated!</h3>
+    <p>Enter your email to get the latest travel news and offers.</p>
+    <input type="email" id="subEmail" placeholder="Your email..." class="form-control mb-3">
+    <button class="btn btn-success" onclick="submitSubscription()">Submit</button>
+    <button class="btn btn-danger mt-2" onclick="closePopup()">Close</button>
+  </div>
+</div>
+</main>
 
+<script src="script.js"></script>
+
+<footer class="text-center py-4">
+  <p id="currentDateTime" class="fw-bold text-warning"></p>
+  <p>&copy; 2025 Your Travel Project. All rights reserved.</p>
+  <p>
+    <a href="#">Facebook</a> |
+    <a href="#">Instagram</a> |
+    <a href="#">Telegram</a>
+  </p>
+  <p>Travel & Culture Hub, Team Members: Adilov Nurkeldi, Akbar Khalili</p>
+</footer>
