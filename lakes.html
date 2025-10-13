@@ -102,7 +102,7 @@
       const travelers = this.travelers.value.trim();
       const date = this.date.value;
 
-      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[a-z]{2,}$/i;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
       const phonePattern = /^[0-9+\\s()-]+$/;
 
       document.getElementById('successMsg').style.display = "none";
