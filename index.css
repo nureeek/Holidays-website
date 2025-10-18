@@ -58,5 +58,63 @@
   display: block;
   margin-top: 10px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #2c3e50; 
+}
+.rating-container {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 30px;
+}
+
+.rating {
+  margin-top: 10px;
+  display: inline-flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 2rem;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star.selected {
+  color: gold;
+}
+
+#musicToggle {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#musicToggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme #musicToggle.btn-success {
+  background-color: #1abc9c;
+  border: none;
+}
+
+body.dark-theme #musicToggle.btn-danger {
+  background-color: #e74c3c;
+  border: none;
+}
+
+#languageSelect {
+  max-width: 220px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }

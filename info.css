@@ -122,12 +122,11 @@ header {
   border-radius: 6px;
 }
 
-/* === Accordion Section Layout Fix === */
 .accordion {
-  max-width: 800px;              /* ограничиваем ширину */
-  margin: 60px auto 80px auto;   /* центрируем и добавляем отступы сверху/снизу */
-  text-align: left;              /* выравниваем текст по левому краю */
-  background: #fff;              /* фон для контраста */
+  max-width: 800px;              
+  margin: 60px auto 80px auto;   
+  text-align: left;             
+  background: #fff;             
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -185,4 +184,3 @@ header {
     padding: 10px;
   }
 }
-
