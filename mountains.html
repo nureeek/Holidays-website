@@ -10,6 +10,7 @@
 </head>
 <body>
   <button id="theme-toggle">Switch Theme</button>
+  
 
   <div class="grid-container">
     <header>
@@ -38,81 +39,54 @@
         <div class="hero-content p-4">
           <h2>Feel the Spirit of the Mountains</h2>
           <p>Snowy peaks, fresh air, and unforgettable trails await you.</p>
+          <button id="sound-btn" class="btn btn-light mt-3">Play Nature Sound</button>
+          <button id="stop-sound-btn" class="btn btn-danger mt-3 ms-2">Stop Sound</button>
         </div>
       </section>
 
       <section class="mountain-info container my-5">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <img src="Mountain-Peak.webp" alt="Almaty Mountains" class="img-fluid rounded shadow">
-          </div>
-          <div class="col-md-6">
-            <h3>The Almaty Mountains</h3>
-            <p>
-              Nestled in southeastern Kazakhstan, the Almaty mountains form part of the stunning 
-              Trans-Ili Alatau range. Known for their snow-covered peaks, alpine meadows, and 
-              crystal-clear rivers, these mountains offer breathtaking scenery year-round.
-            </p>
-            <p>
-              Visitors can enjoy hiking trails, skiing in winter resorts like Shymbulak, and 
-              exploring the famous Big Almaty Lake. The mountains are not just a natural wonder 
-              but also a cultural treasure, deeply rooted in the heritage of the Kazakh people.
-            </p>
-          </div>
-        </div>
+        <h2 class="text-center mb-5">Explore Kazakhstan’s Beautiful Mountains</h2>
+        <div id="mountain-list" class="row g-4"></div>
       </section>
-  <section class="mountain-carousel container my-5">
-    <h2 class="text-center mb-4">Mountain Gallery</h2>
-    <div id="mountainCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner rounded shadow">
-        <div class="carousel-item active">
-          <img src="mountain1.jpg" class="d-block w-100" alt="Mountain 1">
-        </div>
-        <div class="carousel-item">
-          <img src="mountain2.jpg" class="d-block w-100" alt="Mountain 2">
-        </div>
-        <div class="carousel-item">
-          <img src="mountain3.jpg" class="d-block w-100" alt="Mountain 3">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#mountainCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#mountainCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
-      <section class="contact-form container my-5">
-        <h2>Book Your Mountain Tour</h2>
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" id="name" name="name" class="form-control" required>
+
+      <section class="mountain-carousel container my-5">
+        <h2 class="text-center mb-4">Mountain Gallery</h2>
+        <div id="mountainCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner rounded shadow">
+            <div class="carousel-item active">
+              <img src="mountain1.jpg" class="d-block w-100" alt="Mountain 1">
+            </div>
+            <div class="carousel-item">
+              <img src="mountain2.jpg" class="d-block w-100" alt="Mountain 2">
+            </div>
+            <div class="carousel-item">
+              <img src="mountain3.jpg" class="d-block w-100" alt="Mountain 3">
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Your Message</label>
-            <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+          <button class="carousel-control-prev" type="button" data-bs-target="#mountainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#mountainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </section>
     </main>
-<script src="script.js"></script>
 
- <footer class="text-center py-4">
-  <p id="currentDateTime" class="fw-bold text-warning"></p>
-  <p>&copy; 2025 Your Travel Project. All rights reserved.</p>
-  <p>
-    <a href="#">Facebook</a> |
-    <a href="#">Instagram</a> |
-    <a href="#">Telegram</a>
-  </p>
-  <p>Travel & Culture Hub, Team Members: Adilov Nurkeldi, Akbar Khalili</p>
-</footer>
+    <footer class="text-center py-4">
+      <p id="currentDateTime" class="fw-bold text-warning"></p>
+      <p>&copy; 2025 Travel & Culture Hub. All rights reserved.</p>
+      <p>
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Telegram</a>
+      </p>
+      <p>Team Members: Adilov Nurkeldi, Akbar Khalili</p>
+    </footer>
+  </div>
+
+  <script src="mountain.js"></script>
+</body>
+</html>
