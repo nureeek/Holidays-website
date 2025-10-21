@@ -25,6 +25,7 @@ const mountainInfo = {
   }
 };
 
+
 const mountainList = document.getElementById("mountain-list");
 mountainData.forEach(mountain => {
   const card = document.createElement("div");
@@ -88,3 +89,7 @@ function updateDateTime() {
 
 updateDateTime();
 setInterval(updateDateTime, 1000);
+
+$(document).ready(function() {
+  console.log("jQuery is ready!");
+});

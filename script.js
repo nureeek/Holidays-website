@@ -219,3 +219,110 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+$(document).ready(function() {
+  console.log("jQuery is ready!");
+});
+
+$(document).ready(function() {
+  $('#searchBar').on('keyup', function() {
+    var searchTerm = $(this).val().toLowerCase(); 
+    $('.card').each(function() {
+      var cardTitle = $(this).find('.card-title').text().toLowerCase(); 
+
+      if (cardTitle.indexOf(searchTerm) > -1) { 
+        $(this).show();
+      } else { 
+        $(this).hide();
+      }
+    });
+  });
+});
+
+$(document).ready(function() {
+  var destinations = [
+    'Mountains',
+    'Lakes',
+    'City Tours',
+    'Astana',
+    'Almaty',
+    'Kolsay Lake',
+    'Shymkent',
+    'Kaindy',
+    
+  ];
+
+  $('#autocomplete').on('keyup', function() {
+    var inputValue = $(this).val().toLowerCase(); 
+    var suggestions = destinations.filter(function(item) {
+      return item.toLowerCase().indexOf(inputValue) > -1; 
+    });
+
+    if (suggestions.length > 0) {
+      $('#suggestions').empty().show(); 
+      suggestions.forEach(function(suggestion) {
+        $('#suggestions').append('<li class="list-group-item">' + suggestion + '</li>');
+      });
+    } else {
+      $('#suggestions').hide();
+    }
+  });
+
+  $('#suggestions').on('click', 'li', function() {
+    $('#autocomplete').val($(this).text()); 
+    $('#suggestions').hide(); 
+  });
+
+  $(document).click(function(event) {
+    if (!$(event.target).closest('#autocomplete').length) {
+      $('#suggestions').hide();
+    }
+  });
+});
+
+$(document).ready(function() {
+  $('#searchKeyword').on('keyup', function() {
+    var searchTerm = $(this).val().trim().toLowerCase();
+
+    if (searchTerm !== '') {
+      $('#content').each(function() {
+        var content = $(this).html();
+        var regex = new RegExp('(' + searchTerm + ')', 'gi'); 
+
+        var highlightedContent = content.replace(regex, '<span class="highlight">$1</span>');
+        
+        $(this).html(highlightedContent);
+      });
+    } else {
+      $('#content').each(function() {
+        var content = $(this).html();
+        var cleanedContent = content.replace(/<span class="highlight">(.*?)<\/span>/g, '$1'); 
+        $(this).html(cleanedContent);
+      });
+    }
+  });
+});
+
+$(document).ready(function() {
+  $(window).on('scroll', function() {
+    var scrollTop = $(window).scrollTop(); 
+    var docHeight = $(document).height(); 
+    var winHeight = $(window).height(); 
+    var scrollPercent = (scrollTop / (docHeight - winHeight)) * 100; 
+
+    $('#progress-bar').css('width', scrollPercent + '%');
+  });
+});
+$(document).ready(function() {
+  var targetNumber = 1000;
+  
+  $('#number').prop('Counter', 0).animate({
+    Counter: targetNumber
+  }, {
+    duration: 2000, 
+    easing: 'swing', 
+    step: function (now) {
+      $(this).text(Math.ceil(now));
+    }
+  });
+});
+
