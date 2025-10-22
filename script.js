@@ -48,38 +48,80 @@ function updateDateTime() {
 
   element.textContent = now.toLocaleString("en-US", options);
 }
-
-setInterval(updateDateTime, 1000);
-updateDateTime();
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.star').forEach(star => {
-    star.addEventListener('click', function() {
-      const rating = this.getAttribute('data-value');
-      const destination = this.closest('.rating').getAttribute('data-destination');
+  document.querySelectorAll(".rating").forEach(ratingContainer => {
+    const stars = ratingContainer.querySelectorAll(".star");
 
-      document.querySelectorAll(`.rating[data-destination="${destination}"] .star`).forEach(star => {
-        if (star.getAttribute('data-value') <= rating) {
-          star.classList.add('selected');
-        } else {
-          star.classList.remove('selected');
-        }
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        const selectedValue = parseInt(star.getAttribute("data-value"));
+
+        stars.forEach(s => s.classList.remove("selected"));
+
+        stars.forEach(s => {
+          if (parseInt(s.getAttribute("data-value")) <= selectedValue) {
+            s.classList.add("selected");
+          }
+        });
+
+        ratingContainer.setAttribute("data-selected", selectedValue);
       });
-
-      this.closest('.rating').setAttribute('data-selected', rating);
     });
   });
 
-  const submitBtn = document.getElementById('submitRating');
+  const submitBtn = document.getElementById("submitAllRatings");
   if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
-      const ratingContainer = document.querySelector('.rating');
-      const rating = ratingContainer.getAttribute('data-selected');
+    submitBtn.addEventListener("click", () => {
+      const ratings = {};
+      let hasRating = false;
 
-      if (!rating) {
-        alert('PLease choose rating');
-      } else {
-        alert(`Thanks! You graded "${ratingContainer.getAttribute('data-destination')}" на ${rating} ⭐`);
+      document.querySelectorAll(".rating").forEach(ratingContainer => {
+        const destination = ratingContainer.getAttribute("data-destination");
+        const selected = ratingContainer.getAttribute("data-selected");
+
+        if (selected) {
+          ratings[destination] = selected;
+          hasRating = true;
+        }
+      });
+
+      const lang = localStorage.getItem("language") || "en";
+      const messages = {
+        en: {
+          noRating: "Please rate at least one destination before submitting.",
+          thanks: "Thank you for your ratings!",
+          stars: "⭐"
+        },
+        ru: {
+          noRating: "Пожалуйста, оцените хотя бы одно направление перед отправкой.",
+          thanks: "Спасибо за ваши оценки!",
+          stars: "⭐"
+        },
+        kz: {
+          noRating: "Жібермес бұрын кемінде бір бағытты бағалаңыз.",
+          thanks: "Бағаларыңыз үшін рахмет!",
+          stars: "⭐"
+        }
+      };
+
+      if (!hasRating) {
+        alert(messages[lang].noRating);
+        return;
       }
+
+      let result = `${messages[lang].thanks}\n\n`;
+      for (const [dest, score] of Object.entries(ratings)) {
+        result += `${dest}: ${messages[lang].stars.repeat(score)} (${score}/5)\n`;
+      }
+
+      alert(result);
+
+      document.querySelectorAll(".rating").forEach(ratingContainer => {
+        ratingContainer.removeAttribute("data-selected");
+        ratingContainer.querySelectorAll(".star").forEach(star => {
+          star.classList.remove("selected");
+        });
+      });
     });
   }
 });
@@ -105,12 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-const destinations = [
-  { name: "Paris", desc: "City of Lights and Love" },
-  { name: "Kyoto", desc: "Ancient temples and cherry blossoms" },
-  { name: "Istanbul", desc: "Where East meets West" }
-];
-
 const listContainer = document.getElementById("destinationList");
 if (listContainer) {
   destinations.forEach(dest => {
@@ -193,32 +229,188 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const langSelect = document.getElementById("languageSelect");
-  const greeting = document.getElementById("greetingText");
-
-  if (langSelect && greeting) {
-    langSelect.addEventListener("change", () => {
-      const selectedLang = langSelect.value;
-
-      switch (selectedLang) {
-        case "en":
-          greeting.textContent = "Welcome to Travel & Culture Hub!";
-          break;
-        case "ru":
-          greeting.textContent = "Добро пожаловать в Travel & Culture Hub!";
-          break;
-        case "kz":
-          greeting.textContent = "Travel & Culture Hub сайтына қош келдіңіз!";
-          break;
-        default:
-          greeting.textContent = "Welcome!";
-      }
-    });
+const translations = {
+  en: {
+    title: "Travel & Culture Hub",
+    greeting: "Welcome to Travel & Culture Hub!",
+    chooseLanguage: "Choose Language",
+    switchTheme: "Switch Theme",
+    playMusic: "Play Music 🎵", 
+    
+    brand: "Travel & Culture Hub",
+    toggleNav: "Toggle navigation",
+    home: "Home",
+    about: "About",
+    mountains: "Mountains",
+    lakes: "Lakes",
+    cityTours: "City Tours",
+    gallery: "Gallery",
+    
+    heroTitle: "Explore the World. Discover Cultures.",
+    heroDesc: "Join us on a journey to learn about traditions, people, and places around the globe.",
+    learnMore: "Learn More",
+    
+    
+    searchPlaceholder: "Search destinations...",
+    
+    popularDestinations: "Popular Destinations",
+    mountainsDesc: "Snowy peaks and breathtaking trails for adventurers.",
+    lakesDesc: "Peaceful blue lakes surrounded by nature's beauty.",
+    cityToursDesc: "Walk through vibrant cities filled with culture and history.",
+    galleryDesc: "See beautiful photos from our previous adventures.",
+    explore: "Explore",
+    visit: "Visit",
+    joinTour: "Join Tour",
+    view: "View",
+    
+    mountainsAlt: "Mountains",
+    lakesAlt: "Lakes",
+    cityToursAlt: "City Tours",
+    galleryAlt: "Gallery",
+    
+    
+    testimonialsTitle: "What Our Travelers Say",
+    testimonial1: "\"Amazing experience! Would recommend 100%.\"",
+    testimonial2: "\"Affordable and unforgettable trip!\"",
+    
+    rateDestination: "Rate Your Favorite Destinations",
+    sendRate: "Submit Ratings",
+    notRatedYet:"Not rated yet",
+    copyright: "© 2025 Your Travel Project. All rights reserved.",
+    facebook: "Facebook",
+    instagram: "Instagram",
+    telegram: "Telegram",
+    teamMembers: "Travel & Culture Hub, Team Members: Adilov Nurkeldi, Akbar Khalili"
+  },
+  
+  ru: {
+    title: "Центр Путешествий и Культуры",
+    greeting: "Добро пожаловать в Центр Путешествий и Культуры!",
+    chooseLanguage: "Выберите язык",
+    switchTheme: "Сменить тему",
+    playMusic: "Включить музыку 🎵",
+    
+    brand: "Центр Путешествий и Культуры",
+    toggleNav: "Переключить навигацию",
+    home: "Главная",
+    about: "О нас",
+    mountains: "Горы",
+    lakes: "Озера",
+    cityTours: "Городские туры",
+    gallery: "Галерея",
+    
+    heroTitle: "Исследуйте мир. Открывайте культуры.",
+    heroDesc: "Присоединяйтесь к нашему путешествию, чтобы узнать о традициях, людях и местах по всему миру.",
+    learnMore: "Узнать больше",
+    
+    searchPlaceholder: "Поиск направлений...",
+    
+    popularDestinations: "Популярные направления",
+    mountainsDesc: "Снежные вершины и захватывающие дух тропы для искателей приключений.",
+    lakesDesc: "Спокойные голубые озера, окруженные красотой природы.",
+    cityToursDesc: "Прогуляйтесь по ярким городам, наполненным культурой и историей.",
+    galleryDesc: "Посмотрите красивые фотографии с наших предыдущих приключений.",
+    explore: "Исследовать",
+    visit: "Посетить",
+    joinTour: "Присоединиться",
+    view: "Смотреть",
+    
+    mountainsAlt: "Горы",
+    lakesAlt: "Озера",
+    cityToursAlt: "Городские туры",
+    galleryAlt: "Галерея",
+    
+    testimonialsTitle: "Что говорят наши путешественники",
+    testimonial1: "\"Потрясающий опыт! Рекомендую на 100%.\"",
+    testimonial2: "\"Доступная и незабываемая поездка!\"",
+    
+    rateDestination: "Оцените ваше любимое направление",
+    sendRate: "Отправить оценку",
+    notRatedYet:"Еще не оценили",
+    
+    copyright: "© 2025 Ваш туристический проект. Все права защищены.",
+    facebook: "Фейсбук",
+    instagram: "Инстаграм",
+    telegram: "Телеграм",
+    teamMembers: "Центр Путешествий и Культуры, Участники команды: Адилов Нуркелди, Акбар Халили"
+  },
+  
+  kz: {
+    title: "Саяхат және Мәдениет Орталығы",
+    greeting: "Саяхат және Мәдениет Орталығына қош келдіңіз!",
+    chooseLanguage: "Тілді таңдаңыз",
+    switchTheme: "Теманы ауыстыру",
+    playMusic: "Музыканы қосу 🎵",
+    
+    brand: "Саяхат және Мәдениет Орталығы",
+    toggleNav: "Навигацияны ауыстыру",
+    home: "Басты бет",
+    about: "Біз туралы",
+    mountains: "Таулар",
+    lakes: "Көлдер",
+    cityTours: "Қала турлары",
+    gallery: "Галерея",
+    
+    heroTitle: "Әлемді зерттеңіз. Мәдениеттерді ашыңыз.",
+    heroDesc: "Бүкіл әлем бойынша салт-дәстүрлер, адамдар және орындар туралы білу үшін біздің саяхатымызға қосылыңыз.",
+    learnMore: "Толығырақ білу",
+    
+    searchPlaceholder: "Бағыттарды іздеу...",
+    
+    popularDestinations: "Танымал бағыттар",
+    mountainsDesc: "Батырлар үшін қарлы шыңдар және тылсым жолдар.",
+    lakesDesc: "Табиғат сұлулығымен қоршалған тыныш көк көлдер.",
+    cityToursDesc: "Мәдениет пен тарихқа толқан жарқын қалалар арқылы серуендеңіз.",
+    galleryDesc: "Біздің алдыңғы бапталымдардан әдемі фотосуреттерді қараңыз.",
+    explore: "Зерттеу",
+    visit: "Бару",
+    joinTour: "Қосылу",
+    view: "Қарау",
+    
+    mountainsAlt: "Таулар",
+    lakesAlt: "Көлдер",
+    cityToursAlt: "Қала турлары",
+    galleryAlt: "Галерея",
+    
+    testimonialsTitle: "Біздің саяхатшылардың пікірлері",
+    testimonial1: "\"Керемет тәжірибе! 100% ұсынамын.\"",
+    testimonial2: "\"Қолжетімді және есіңізден шықпайтын саяхат!\"",
+    
+    rateDestination: "Сүйікті бағыттарыңызды бағалаңыз",
+    sendRate: "Бағаны жіберу",
+    notRatedYet:"Әзур бағаланбады",
+    
+    copyright: "© 2025 Сіздің саяхат жобаңыз. Барлық құқықтар қорғалған.",
+    teamMembers: "Саяхат және Мәдениет Орталығы, Команда мүшелері: Әділов Нүркелді, Ақбар Халили"
   }
+};
+function updateText(language) {
+  const elements = document.querySelectorAll('[data-translate]');
+  elements.forEach(element => {
+    const key = element.getAttribute('data-translate');
+    if (translations[language] && translations[language][key]) {
+      element.textContent = translations[language][key];
+    }
+  });
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const languageSelect = document.getElementById('languageSelect');
+  
+  const savedLanguage = localStorage.getItem('language') || 'en';
+  updateText(savedLanguage);  
+
+  languageSelect.value = savedLanguage;
+
+  languageSelect.addEventListener('change', (event) => {
+    const selectedLanguage = event.target.value;
+    localStorage.setItem('language', selectedLanguage);  
+    updateText(selectedLanguage);  
+  });
 });
+
 $(document).ready(function() {
   console.log("jQuery is ready!");
 });

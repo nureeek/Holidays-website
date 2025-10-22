@@ -85,6 +85,22 @@
   color: gold;
 }
 
+.rating-card {
+  transition: all 0.3s ease;
+}
+
+.rating-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.rating-text {
+  min-height: 20px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+
 #musicToggle {
   position: fixed;
   bottom: 25px;
