@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="info.css">
 
 </head>
+<script>
+(function() {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.add(savedTheme === "dark" ? "dark-theme" : "light-theme");
+})();
+</script>
 
 <body>
     <button id="theme-toggle" class="btn btn-outline-light"> Switch Theme</button>

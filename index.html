@@ -11,6 +11,13 @@
 <link rel="stylesheet" href="css/global.css">
 
 </head>
+<script>
+(function() {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.add(savedTheme === "dark" ? "dark-theme" : "light-theme");
+})();
+</script>
+
 <body>
   <button id="theme-toggle" data-translate="switchTheme">Switch Theme </button>
   <button id="musicToggle" data-translate="playMusic" class="btn btn-success">Play Music 🎵</button>

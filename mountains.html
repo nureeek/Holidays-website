@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="mountain.css">
 </head>
+<script>
+(function() {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.add(savedTheme === "dark" ? "dark-theme" : "light-theme");
+})();
+</script>
+
 <body>
   <button id="theme-toggle">Switch Theme</button>
   

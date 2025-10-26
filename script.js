@@ -128,25 +128,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const themeButton = document.getElementById("theme-toggle");
+  if (!themeButton) return;
 
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    document.body.classList.add(savedTheme);
-  } else {
-    document.body.classList.add("light-theme"); 
-  }
+  // Применяем сохранённую тему
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.add(savedTheme === "dark" ? "dark-theme" : "light-theme");
 
+  // Меняем текст на кнопке в зависимости от темы
+  themeButton.textContent =
+    savedTheme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme";
+
+  // Переключатель темы
   themeButton.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme");
-    document.body.classList.toggle("light-theme");
+    const isDark = document.body.classList.toggle("dark-theme");
+    document.body.classList.toggle("light-theme", !isDark);
 
-    if (document.body.classList.contains("dark-theme")) {
-      localStorage.setItem("theme", "dark-theme");
-    } else {
-      localStorage.setItem("theme", "light-theme");
-    }
+    // Сохраняем выбор в localStorage
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    // Обновляем текст на кнопке
+    themeButton.textContent = isDark
+      ? "Switch to Light Theme"
+      : "Switch to Dark Theme";
   });
 });
+
 const listContainer = document.getElementById("destinationList");
 if (listContainer) {
   destinations.forEach(dest => {
@@ -517,4 +523,5 @@ $(document).ready(function() {
     }
   });
 });
+
 

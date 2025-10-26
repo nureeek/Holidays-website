@@ -202,3 +202,139 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+
+/* === DARK THEME SUPPORT === */
+
+body.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-theme header,
+body.dark-theme footer {
+  background-color: #1a1a1a !important;
+  color: #f1f1f1;
+}
+
+body.dark-theme nav a {
+  color: #ccc;
+}
+
+body.dark-theme nav a.active,
+body.dark-theme nav a:hover {
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+}
+
+/* Секция с озёрами */
+body.dark-theme .lake-intro {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f1f1f1;
+}
+
+/* Контент внутри intro */
+body.dark-theme .lake-text h2 {
+  color: #6dd5fa;
+}
+
+body.dark-theme .lake-text p {
+  color: #d0d0d0;
+}
+
+
+body.dark-theme .contact-form {
+  background: #181818 !important; /* заменяем и background, и background-color */
+  background-color: #181818 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* чтобы точно перекрыть inline / Bootstrap */
+body.dark-theme section.contact-form,
+body.dark-theme div.contact-form {
+  background: #181818 !important;
+  background-color: #181818 !important;
+}
+
+body.dark-theme .contact-form * {
+  color: #f1f1f1 !important;
+}
+
+body.dark-theme .contact-form input,
+body.dark-theme .contact-form textarea,
+body.dark-theme .contact-form select {
+  background: #2b2b2b !important;
+  background-color: #2b2b2b !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-theme .contact-form input::placeholder,
+body.dark-theme .contact-form textarea::placeholder {
+  color: #bbb !important;
+}
+
+body.dark-theme .contact-form h2 {
+  color: #6dd5fa !important;
+}
+
+body.dark-theme .contact-form button {
+  background: #2980b9 !important;
+  border: none !important;
+  color: #fff !important;
+}
+
+body.dark-theme .contact-form button:hover {
+  background: #3498db !important;
+}
+
+/* === DARK THEME FIX (FINAL FOR LAKE FORM) === */
+
+/* Контейнер формы */
+body.dark-theme .contact-form {
+  background: #111 !important;
+  background-color: #111 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #333 !important;
+  box-shadow: none !important;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Заголовок */
+body.dark-theme .contact-form h2 {
+  color: #6dd5fa !important;
+}
+
+/* Текст и лейблы */
+body.dark-theme .contact-form label,
+body.dark-theme .contact-form p {
+  color: #e0e0e0 !important;
+}
+
+/* Поля ввода */
+body.dark-theme .contact-form input,
+body.dark-theme .contact-form textarea,
+body.dark-theme .contact-form select {
+  background: #222 !important;
+  background-color: #222 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #444 !important;
+}
+
+/* Placeholder */
+body.dark-theme .contact-form input::placeholder,
+body.dark-theme .contact-form textarea::placeholder {
+  color: #aaa !important;
+}
+
+/* Кнопка */
+body.dark-theme .contact-form button {
+  background-color: #2980b9 !important;
+  border: none !important;
+  color: #fff !important;
+}
+body.dark-theme .contact-form button:hover {
+  background-color: #3498db !important;
+}

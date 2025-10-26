@@ -189,3 +189,75 @@ header {
   color: red; 
   font-weight: bold; 
 }
+
+
+/* === DARK THEME FIX FOR INFO PAGE === */
+body.dark-theme main,
+body.dark-theme .accordion,
+body.dark-theme .container,
+body.dark-theme .sidebar,
+body.dark-theme .card {
+  background-color: #181818 !important;
+  color: #f1f1f1 !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* FAQ блок */
+body.dark-theme .accordion h2 {
+  color: #6dd5fa !important;
+}
+
+body.dark-theme .accordion-item h3 {
+  background-color: #2b2b2b !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-theme .accordion-item h3:hover {
+  background-color: #2980b9 !important;
+}
+
+body.dark-theme .accordion-item p {
+  background-color: #222 !important;
+  color: #ddd !important;
+  border-left: 4px solid #2980b9 !important;
+}
+
+/* Карточки участников */
+body.dark-theme .card {
+  background-color: #202020 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #333 !important;
+}
+
+/* Боковая панель */
+body.dark-theme .sidebar {
+  background-color: #111 !important;
+}
+
+body.dark-theme .sidebar h3,
+body.dark-theme .sidebar a {
+  color: #6dd5fa !important;
+}
+
+/* Кнопки */
+body.dark-theme button,
+body.dark-theme .btn {
+  background-color: #2980b9 !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+body.dark-theme button:hover,
+body.dark-theme .btn:hover {
+  background-color: #3498db !important;
+}
+
+/* Текст в секции Vision */
+body.dark-theme #aboutText,
+body.dark-theme #moreText,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme p {
+  color: #e0e0e0 !important;
+}
