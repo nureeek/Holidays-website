@@ -1,3 +1,4 @@
+/* === HEADER === */
 header {
   background-color: #1e2a38;
   color: white;
@@ -54,12 +55,15 @@ nav a.active {
   }
 }
 
+/* === INTRO SECTION === */
 .lake-intro {
   padding: 60px 20px;
   background: linear-gradient(to right, #6dd5fa, #a1ffce);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #f0f8ff;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .lake-content {
@@ -96,6 +100,7 @@ nav a.active {
   transform: scale(1.05);
 }
 
+/* === CONTACT FORM === */
 .contact-form {
   margin: 80px auto 40px;
   max-width: 600px;
@@ -104,6 +109,7 @@ nav a.active {
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: left;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .contact-form h2 {
@@ -157,10 +163,12 @@ nav a.active {
 
 .error {
   color: red;
-  font-size: 0.9rem;
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: block;
 }
 
-.message {
+.message, #successMsg {
   color: green;
   text-align: center;
   display: none;
@@ -168,23 +176,26 @@ nav a.active {
   font-weight: bold;
 }
 
+/* === BACKGROUND COLOR BUTTON === */
 #bgColorBtn {
   display: block;
   margin: 20px auto 80px;
-  padding: 10px 20px;
+  padding: 12px 25px;
+  font-size: 1.1em;
   background-color: #1e6f5c;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 #bgColorBtn:hover {
   background-color: #155d4c;
+  transform: scale(1.05);
 }
 
+/* === FOOTER === */
 footer {
   background-color: #1e2a38;
   color: #ffffff;
@@ -203,12 +214,34 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* === THEME TOGGLE BUTTON === */
+#theme-toggle {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 999;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background-color: primary;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-/* === DARK THEME SUPPORT === */
+#theme-toggle:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
 
+/* === DARK THEME === */
 body.dark-theme {
-  background-color: #121212;
+  background-color: #0d1117 !important;
   color: #e0e0e0;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.dark-theme header,
@@ -227,13 +260,11 @@ body.dark-theme nav a:hover {
   border-bottom: 2px solid #ffd700;
 }
 
-/* Секция с озёрами */
 body.dark-theme .lake-intro {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: #f1f1f1;
 }
 
-/* Контент внутри intro */
 body.dark-theme .lake-text h2 {
   color: #6dd5fa;
 }
@@ -242,99 +273,43 @@ body.dark-theme .lake-text p {
   color: #d0d0d0;
 }
 
-
-body.dark-theme .contact-form {
-  background: #181818 !important; /* заменяем и background, и background-color */
-  background-color: #181818 !important;
-  color: #f1f1f1 !important;
-  border: 1px solid #333 !important;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05) !important;
-}
-
-/* чтобы точно перекрыть inline / Bootstrap */
-body.dark-theme section.contact-form,
-body.dark-theme div.contact-form {
-  background: #181818 !important;
-  background-color: #181818 !important;
-}
-
-body.dark-theme .contact-form * {
-  color: #f1f1f1 !important;
-}
-
-body.dark-theme .contact-form input,
-body.dark-theme .contact-form textarea,
-body.dark-theme .contact-form select {
-  background: #2b2b2b !important;
-  background-color: #2b2b2b !important;
-  color: #f1f1f1 !important;
-  border: 1px solid #444 !important;
-}
-
-body.dark-theme .contact-form input::placeholder,
-body.dark-theme .contact-form textarea::placeholder {
-  color: #bbb !important;
-}
-
-body.dark-theme .contact-form h2 {
-  color: #6dd5fa !important;
-}
-
-body.dark-theme .contact-form button {
-  background: #2980b9 !important;
-  border: none !important;
-  color: #fff !important;
-}
-
-body.dark-theme .contact-form button:hover {
-  background: #3498db !important;
-}
-
-/* === DARK THEME FIX (FINAL FOR LAKE FORM) === */
-
-/* Контейнер формы */
 body.dark-theme .contact-form {
   background: #111 !important;
-  background-color: #111 !important;
   color: #f1f1f1 !important;
   border: 1px solid #333 !important;
   box-shadow: none !important;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Заголовок */
 body.dark-theme .contact-form h2 {
   color: #6dd5fa !important;
 }
 
-/* Текст и лейблы */
-body.dark-theme .contact-form label,
-body.dark-theme .contact-form p {
-  color: #e0e0e0 !important;
-}
-
-/* Поля ввода */
 body.dark-theme .contact-form input,
-body.dark-theme .contact-form textarea,
-body.dark-theme .contact-form select {
+body.dark-theme .contact-form textarea {
   background: #222 !important;
-  background-color: #222 !important;
   color: #f1f1f1 !important;
   border: 1px solid #444 !important;
 }
 
-/* Placeholder */
 body.dark-theme .contact-form input::placeholder,
 body.dark-theme .contact-form textarea::placeholder {
   color: #aaa !important;
 }
 
-/* Кнопка */
 body.dark-theme .contact-form button {
   background-color: #2980b9 !important;
-  border: none !important;
   color: #fff !important;
 }
+
 body.dark-theme .contact-form button:hover {
   background-color: #3498db !important;
+}
+
+/* Dark mode toggle button variant */
+body.dark-theme #theme-toggle {
+  background-color: primary;
+}
+
+body.dark-theme #theme-toggle:hover {
+  background-color: primary;
 }

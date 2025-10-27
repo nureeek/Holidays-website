@@ -32,22 +32,49 @@ function submitSubscription() {
   }
 }
 
-function updateDateTime() {
-  const element = document.getElementById("currentDateTime");
-  if (!element) return; 
-  const now = new Date();
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  };
+// === UNIVERSAL FOOTER TIME FEATURE ===
+document.addEventListener("DOMContentLoaded", () => {
+  const timeElement = document.getElementById("currentDateTime");
+  const showTimeBtn = document.getElementById("showTimeBtn");
 
-  element.textContent = now.toLocaleString("en-US", options);
-}
+  if (!timeElement || !showTimeBtn) return; // If not on page, skip
+
+  // Function to update time
+  function updateDateTime() {
+    const now = new Date();
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    };
+    timeElement.textContent = now.toLocaleString("en-US", options);
+  }
+
+  // Timer reference
+  let timer = null;
+  let isVisible = false;
+
+  // Button behavior
+  showTimeBtn.addEventListener("click", () => {
+    isVisible = !isVisible;
+
+    if (isVisible) {
+      timeElement.style.display = "inline";
+      showTimeBtn.textContent = "Hide Time 🕓";
+      updateDateTime();
+      timer = setInterval(updateDateTime, 1000);
+    } else {
+      timeElement.style.display = "none";
+      showTimeBtn.textContent = "Show Time ⏰";
+      clearInterval(timer);
+    }
+  });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".rating").forEach(ratingContainer => {
     const stars = ratingContainer.querySelectorAll(".star");
@@ -419,62 +446,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 $(document).ready(function() {
   console.log("jQuery is ready!");
-});
-
-$(document).ready(function() {
-  $('#searchBar').on('keyup', function() {
-    var searchTerm = $(this).val().toLowerCase(); 
-    $('.card').each(function() {
-      var cardTitle = $(this).find('.card-title').text().toLowerCase(); 
-
-      if (cardTitle.indexOf(searchTerm) > -1) { 
-        $(this).show();
-      } else { 
-        $(this).hide();
-      }
-    });
-  });
-});
-
-$(document).ready(function() {
-  var destinations = [
-    'Mountains',
-    'Lakes',
-    'City Tours',
-    'Astana',
-    'Almaty',
-    'Kolsay Lake',
-    'Shymkent',
-    'Kaindy',
-    
-  ];
-
-  $('#autocomplete').on('keyup', function() {
-    var inputValue = $(this).val().toLowerCase(); 
-    var suggestions = destinations.filter(function(item) {
-      return item.toLowerCase().indexOf(inputValue) > -1; 
-    });
-
-    if (suggestions.length > 0) {
-      $('#suggestions').empty().show(); 
-      suggestions.forEach(function(suggestion) {
-        $('#suggestions').append('<li class="list-group-item">' + suggestion + '</li>');
-      });
-    } else {
-      $('#suggestions').hide();
-    }
-  });
-
-  $('#suggestions').on('click', 'li', function() {
-    $('#autocomplete').val($(this).text()); 
-    $('#suggestions').hide(); 
-  });
-
-  $(document).click(function(event) {
-    if (!$(event.target).closest('#autocomplete').length) {
-      $('#suggestions').hide();
-    }
-  });
 });
 
 $(document).ready(function() {

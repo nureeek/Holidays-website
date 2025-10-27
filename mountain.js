@@ -74,13 +74,7 @@ hero.addEventListener("mousemove", (e) => {
   hero.style.backgroundPosition = `${e.offsetX / 10}px ${e.offsetY / 10}px`;
 });
 
-function updateDateTime() {
-  const now = new Date();
-  document.getElementById("currentDateTime").textContent = now.toLocaleString();
-}
 
-updateDateTime();
-setInterval(updateDateTime, 1000);
 
 $(document).ready(function() {
   console.log("jQuery is ready!");

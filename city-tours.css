@@ -119,3 +119,23 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* 🌆 Lazy Load Fade-In Effect */
+.card-img-top.loaded {
+  animation: glow 0.8s ease-in-out;
+  border-radius: 8px; 
+  opacity: 1 !important; 
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0px rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(0, 255, 0, 0);
+  }
+}
+
