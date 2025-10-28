@@ -447,6 +447,75 @@ document.addEventListener('DOMContentLoaded', () => {
 $(document).ready(function() {
   console.log("jQuery is ready!");
 });
+$(document).ready(function() {
+  $('#searchKeyword').on('input', function() {
+    const searchTerm = $(this).val().trim().toLowerCase();
+    $('#content').html($('#content').html().replace(/<span class="highlight">/g, '').replace(/<\/span>/g, ''));
+
+    if (searchTerm.length > 0) {
+      $('#content p').each(function() {
+        const paragraph = $(this);
+        const text = paragraph.text().toLowerCase();
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+
+        const highlightedText = paragraph.html().replace(regex, '<span class="highlight">$1</span>');
+        paragraph.html(highlightedText);
+      });
+    }
+  });
+});
+
+$(document).ready(function() {
+  $('#autocomplete').on('input', function() {
+    const searchTerm = $(this).val().trim().toLowerCase();
+
+    if (searchTerm.length === 0) {
+      $('#suggestions').hide();
+    } else {
+      $('#suggestions').show();
+      
+      const places = [
+        'Astana',
+        'Almaty',
+        'Kolsay Lake',
+        'Mountain Peaks',
+        'Kaindy Lake',
+        'Shymkent'
+      ];
+
+      $('#suggestions').empty();
+
+      places.forEach(function(place) {
+        if (place.toLowerCase().includes(searchTerm)) {
+          const suggestionItem = `<li class="list-group-item">${place}</li>`;
+          $('#suggestions').append(suggestionItem);
+        }
+      });
+    }
+
+    $('.gallery-item').each(function() {
+      const imageAlt = $(this).find('img').attr('alt').toLowerCase(); 
+      if (imageAlt.includes(searchTerm)) {
+        $(this).show(); 
+      } else {
+        $(this).hide(); 
+      }
+    });
+  });
+
+  $(document).click(function(event) {
+    if (!$(event.target).closest('#autocomplete').length) {
+      $('#suggestions').hide();
+    }
+  });
+
+  $(document).on('click', '#suggestions li', function() {
+    const selectedText = $(this).text();
+    $('#autocomplete').val(selectedText); 
+    $('#suggestions').hide(); 
+  });
+});
+
 
 $(document).ready(function() {
   $('#searchBar').on('keyup', function() {
