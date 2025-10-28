@@ -147,7 +147,7 @@ body.dark-theme #musicToggle.btn-danger {
 #progress-bar {
   height: 5px;
   width: 0%;
-  background-color: #4caf50; 
+  background-color: #00b894; 
   transition: width 0.2s ease-out;
 }
 #counter {
