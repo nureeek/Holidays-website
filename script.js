@@ -449,27 +449,22 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $('#searchKeyword').on('keyup', function() {
-    var searchTerm = $(this).val().trim().toLowerCase();
+  $('#searchBar').on('keyup', function() {
+    const searchTerm = $(this).val().trim().toLowerCase();
 
-    if (searchTerm !== '') {
-      $('#content').each(function() {
-        var content = $(this).html();
-        var regex = new RegExp('(' + searchTerm + ')', 'gi'); 
+    $('.card').each(function() {
+      const title = $(this).find('.card-title').text().toLowerCase();
+      const desc = $(this).find('.card-text').text().toLowerCase();
 
-        var highlightedContent = content.replace(regex, '<span class="highlight">$1</span>');
-        
-        $(this).html(highlightedContent);
-      });
-    } else {
-      $('#content').each(function() {
-        var content = $(this).html();
-        var cleanedContent = content.replace(/<span class="highlight">(.*?)<\/span>/g, '$1'); 
-        $(this).html(cleanedContent);
-      });
-    }
+      if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+        $(this).parent().show();  
+      } else {
+        $(this).parent().hide(); 
+      }
+    });
   });
 });
+
 
 $(document).ready(function() {
   $(window).on('scroll', function() {
