@@ -127,6 +127,7 @@ body.dark-theme #musicToggle.btn-danger {
   background-color: #e74c3c;
   border: none;
 }
+ 
 
 #languageSelect {
   max-width: 220px;
@@ -147,12 +148,94 @@ body.dark-theme #musicToggle.btn-danger {
 #progress-bar {
   height: 5px;
   width: 0%;
-  background-color: #00b894; 
+  background-color: #00b894;
   transition: width 0.2s ease-out;
 }
+
 #counter {
   font-size: 40px;
   font-weight: bold;
   color: #4caf50;
 }
 
+#searchBar {
+  max-width: 500px; /* Ширина поля поиска */
+  margin: 0 auto; /* Центрирование */
+  display: block; /* Для лучшего центрирования */
+}
+
+
+
+.hero p {
+  font-size: 1.2em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.fs-5 {
+  font-size: 1.25rem;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+/* Контейнер для всей навигации */
+.container-fluid {
+  display: flex;
+  justify-content: space-between; /* Элементы на расстоянии друг от друга */
+  align-items: center;
+}
+
+/* Логотип будет всегда слева */
+.navbar .navbar-brand {
+  margin-right: auto; /* Это гарантирует, что логотип будет слева */
+}
+
+/* Правильное выравнивание элементов меню */
+.navbar .navbar-nav {
+  margin-left: auto; /* Выравнивание элементов навигации по правому краю */
+}
+
+
+/* Выбор языка */
+.d-flex {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#languageSelect {
+  font-weight: bold;
+  margin-left: 20px; /* Немного отступа для расстояния между логотипом и селектом */
+}
+
+.navbar-toggler {
+  margin-left: auto; /* Кнопка выравнивается вправо */
+}
+
+/* === STAR RATING FIX FOR DARK THEME === */
+body.dark-theme .rating .star {
+  color: #6c757d !important; /* Серые звёзды по умолчанию */
+}
+
+body.dark-theme .rating .star.selected {
+  color: #ffd700 !important; /* Золотые звезды при выборе */
+}
+
+body.dark-theme .rating .star:hover,
+body.dark-theme .rating .star:hover ~ .star {
+  color: #ffcc00 !important; /* Подсветка при наведении */
+  transition: color 0.2s ease;
+}

@@ -560,3 +560,12 @@ $(document).ready(function() {
 });
 
 
+// Пример для добавления класса "selected" к звезде при клике
+$(document).ready(function() {
+  $('.star').on('click', function() {
+    var value = $(this).data('value');
+    $(this).siblings().removeClass('selected');
+    $(this).addClass('selected');
+    $(this).prevAll().addClass('selected'); // Для всех звезд слева от текущей
+  });
+});

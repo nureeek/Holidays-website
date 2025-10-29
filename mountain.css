@@ -173,3 +173,50 @@ body.dark-theme .mountain-card p {
 body.dark-theme .card-content {
   background-color: #2a2a2a !important;
 }
+
+/* Светлая тема */
+body.light-theme {
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+body.light-theme .mountain-hero {
+  background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+}
+
+body.light-theme .mountain-card {
+  background-color: white;
+  color: #333;
+}
+
+body.light-theme footer {
+  background: #222;
+  color: white;
+}
+
+/* Темная тема */
+body.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-theme .mountain-hero {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+}
+
+body.dark-theme .mountain-card {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+body.dark-theme footer {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+body.dark-theme .mountain-info {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+}

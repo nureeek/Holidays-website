@@ -5,9 +5,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 60px;
+  padding: 15px 20px; /* Уменьшите отступы */
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   flex-wrap: wrap;
+  width: 100%; /* Обеспечивает полную ширину */
 }
 
 header h1 {
@@ -20,6 +21,7 @@ nav {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: flex-start; /* Для выравнивания элементов меню */
 }
 
 nav a {
@@ -42,6 +44,7 @@ nav a.active {
   border-bottom: 2px solid #ffd700;
 }
 
+/* Для мобильных устройств */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -54,6 +57,7 @@ nav a.active {
     justify-content: center;
   }
 }
+
 
 /* === INTRO SECTION === */
 .lake-intro {

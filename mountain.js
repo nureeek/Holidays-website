@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme") || "light";
   document.body.classList.add(savedTheme === "dark" ? "dark-theme" : "light-theme");
 
-  // Устанавливаем текст кнопки
+  // Устанавливаем текст кнопки в зависимости от сохраненной темы
   toggleBtn.textContent =
     savedTheme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme";
 
@@ -97,8 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("light-theme");
 
     const isDark = document.body.classList.contains("dark-theme");
+
+    // Сохраняем текущую тему в localStorage
     localStorage.setItem("theme", isDark ? "dark" : "light");
 
+    // Обновляем текст на кнопке после переключения темы
     toggleBtn.textContent = isDark
       ? "Switch to Light Theme"
       : "Switch to Dark Theme";

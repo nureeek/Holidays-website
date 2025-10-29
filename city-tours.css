@@ -1,6 +1,6 @@
 .city-hero {
-  height: 60vh;
-  background: url("bustour.jpg") center/cover no-repeat;
+  height: 80vh;
+  background: url("image.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,3 +139,13 @@ nav {
   }
 }
 
+/* Убираем белую полосу между navbar и hero */
+header, .navbar {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.hero {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
