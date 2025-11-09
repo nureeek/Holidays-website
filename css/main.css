@@ -55,9 +55,12 @@
   }
 
 
-  @media (max-width: 768px) {
-    nav { flex-direction: column; text-align: center; }
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
   }
+}
 
 
   .contact-form {
@@ -264,7 +267,7 @@ body.dark-theme .card .btn {
 }
 
 body.dark-theme .hero {
-  background: url("original.jpg") no-repeat center/cover;
+  background: url("../images/original.jpg") no-repeat center/cover;
   filter: brightness(0.6);
   color: #ffffff;
 }
@@ -327,4 +330,22 @@ body.dark-theme footer a:hover {
 
 html[lang="kz"] {
   font-family: Arial, sans-serif; 
+}
+.weather-info {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #1e6f5c;
+}
+.weather-info img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .hero h2 { font-size: 1.4rem; }
+  .hero p { font-size: 0.9rem; }
+  .card img { height: auto; }
+}
+.page-section {
+  padding: 60px 0;
 }

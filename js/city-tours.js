@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     timeDisplay.textContent = now.toLocaleString();
   }
 
-  // 🟢 TASK 8: COPY TO CLIPBOARD (CLEAN DESIGN)
   const cityCards = document.querySelectorAll(".city-tours .card-body");
 
   cityCards.forEach((card) => {
@@ -78,7 +77,7 @@ function initLazyLoad() {
     const img = $(this);
     const realSrc = img.attr("src");
     img.attr("data-src", realSrc);
-    img.attr("src", "placeholder.jpg"); // must exist!
+    img.attr("src", "../images/placeholder.jpg"); // must exist!
     img.css("opacity", "0"); // ensure fade-in starts from invisible
   });
 
@@ -123,3 +122,33 @@ function initLazyLoad() {
 initLazyLoad();
 
 });
+const apiKey = "4841f3e36fd169953b5933f83494ee25";
+
+async function loadWeather() {
+  const weatherElements = document.querySelectorAll(".weather-info");
+
+  for (const el of weatherElements) {
+    const city = el.getAttribute("data-city");
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=en`
+      );
+      const data = await response.json();
+      if (data.cod === 200) {
+        const temp = Math.round(data.main.temp);
+        const desc = data.weather[0].description;
+        const icon = data.weather[0].icon;
+        el.innerHTML = `
+          <img src="https://openweathermap.org/img/wn/${icon}.png" alt="${desc}" style="vertical-align:middle;">
+          ${temp}°C, ${desc}
+        `;
+      } else {
+        el.textContent = "Weather not found";
+      }
+    } catch (err) {
+      el.textContent = "Error loading weather";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadWeather);

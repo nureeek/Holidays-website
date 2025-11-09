@@ -32,14 +32,12 @@ function submitSubscription() {
   }
 }
 
-// === UNIVERSAL FOOTER TIME FEATURE ===
 document.addEventListener("DOMContentLoaded", () => {
   const timeElement = document.getElementById("currentDateTime");
   const showTimeBtn = document.getElementById("showTimeBtn");
 
   if (!timeElement || !showTimeBtn) return; // If not on page, skip
 
-  // Function to update time
   function updateDateTime() {
     const now = new Date();
     const options = {
@@ -92,6 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         ratingContainer.setAttribute("data-selected", selectedValue);
+        const ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+const destination = ratingContainer.getAttribute("data-destination");
+ratings[destination] = selectedValue;
+localStorage.setItem("ratings", JSON.stringify(ratings));
       });
     });
   });
@@ -300,7 +302,7 @@ const translations = {
     lakesAlt: "Lakes",
     cityToursAlt: "City Tours",
     galleryAlt: "Gallery",
-    
+    showTimeBtn: "Show Time",
     
     testimonialsTitle: "What Our Travelers Say",
     testimonial1: "\"Amazing experience! Would recommend 100%.\"",
@@ -352,6 +354,7 @@ const translations = {
     lakesAlt: "Озера",
     cityToursAlt: "Городские туры",
     galleryAlt: "Галерея",
+    showTimeBtn:"Показать Время",
     
     testimonialsTitle: "Что говорят наши путешественники",
     testimonial1: "\"Потрясающий опыт! Рекомендую на 100%.\"",
@@ -404,7 +407,8 @@ const translations = {
     lakesAlt: "Көлдер",
     cityToursAlt: "Қала турлары",
     galleryAlt: "Галерея",
-    
+    showTimeBtn:"Уақыт көрсету",
+
     testimonialsTitle: "Біздің саяхатшылардың пікірлері",
     testimonial1: "\"Керемет тәжірибе! 100% ұсынамын.\"",
     testimonial2: "\"Қолжетімді және есіңізден шықпайтын саяхат!\"",
@@ -560,7 +564,6 @@ $(document).ready(function() {
 });
 
 
-// Пример для добавления класса "selected" к звезде при клике
 $(document).ready(function() {
   $('.star').on('click', function() {
     var value = $(this).data('value');
@@ -568,4 +571,127 @@ $(document).ready(function() {
     $(this).addClass('selected');
     $(this).prevAll().addClass('selected'); // Для всех звезд слева от текущей
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInputs = ["#searchBar", "#autocomplete", "#searchKeyword"];
+
+  searchInputs.forEach(selector => {
+    const input = document.querySelector(selector);
+    if (!input) return;
+
+    // Восстанавливаем сохранённое значение
+    const savedValue = localStorage.getItem(selector);
+    if (savedValue) {
+      input.value = savedValue;
+      input.dispatchEvent(new Event("input")); // запустить фильтрацию
+      input.dispatchEvent(new Event("keyup")); // для searchBar
+    }
+
+    // Сохраняем значение в localStorage только после нажатия Enter
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        localStorage.setItem(selector, input.value.trim());
+      }
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBar = document.getElementById("searchBar");
+  const cards = document.querySelectorAll(".card");
+
+  searchBar.addEventListener("input", () => {
+    const query = searchBar.value.trim().toLowerCase();
+
+    // Фильтруем карточки
+    filterCards(query);
+
+    // Сохраняем результаты в истории, только если есть текст
+    if (query.length > 0) {
+      const results = Array.from(cards)
+        .filter(card => card.textContent.toLowerCase().includes(query))
+        .map(card => card.querySelector("h5").textContent); // сохраняем название карточки
+
+      // Получаем существующую историю
+      const history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+      history.push({
+        query,
+        results,
+        time: new Date().toLocaleString()
+      });
+
+      localStorage.setItem("searchHistory", JSON.stringify(history));
+    }
+  });
+
+  function filterCards(query) {
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = text.includes(query) ? "block" : "none";
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBar = document.getElementById("searchBar");
+  searchBar.value = ""; // очищаем при загрузке
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname;
+
+  // Список страниц, где нужно очищать сохранённый поиск
+  const clearSearchOnPages = ["gallery.html", "info.html"];
+
+  // Проверяем, содержит ли путь имя страницы
+  const shouldClear = clearSearchOnPages.some(page => currentPage.includes(page));
+
+  if (shouldClear) {
+    console.log("🧹 Clearing search data for this page:", currentPage);
+    localStorage.removeItem("searchQuery");
+    localStorage.removeItem("searchResults");
+    localStorage.removeItem("searchHistory");
+    localStorage.removeItem("#searchBar");
+    localStorage.removeItem("#autocomplete");
+    localStorage.removeItem("#searchKeyword");
+
+    // также очищаем сами поля поиска
+    ["#searchBar", "#autocomplete", "#searchKeyword"].forEach(sel => {
+      const input = document.querySelector(sel);
+      if (input) input.value = "";
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+  if (navLinks.length > 0) {
+    let currentIndex = Array.from(navLinks).findIndex(link => link.classList.contains("active"));
+    if (currentIndex === -1) currentIndex = 0;
+
+    // Устанавливаем фокус на текущий активный элемент
+    navLinks[currentIndex].focus();
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+        // Убираем активный класс у всех
+        navLinks.forEach(link => link.classList.remove("active"));
+
+        if (event.key === "ArrowRight") {
+          currentIndex = (currentIndex + 1) % navLinks.length;
+        } else if (event.key === "ArrowLeft") {
+          currentIndex = (currentIndex - 1 + navLinks.length) % navLinks.length;
+        }
+
+        // Добавляем active новому
+        navLinks[currentIndex].classList.add("active");
+        navLinks[currentIndex].focus();
+
+        // Предотвращаем прокрутку страницы
+        event.preventDefault();
+      }
+    });
+  }
 });

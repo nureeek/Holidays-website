@@ -102,9 +102,7 @@ $(document).ready(function () {
     });
   }
 
-  // === CLOCK SOUND ===
-  // ✅ Load your local sound file (place "click.mp3" in the same folder as this JS)
-  const audioUrl = './click.mp3'; 
+  const audioUrl = '../sounds/click.mp3'; 
   const preloadedAudio = new Audio(audioUrl);
   preloadedAudio.preload = 'auto';
 

@@ -220,3 +220,20 @@ body.dark-theme .mountain-info {
   background-color: #2a2a2a;
   color: #f1f1f1;
 }
+
+.mountain-weather {
+  font-size: 1rem;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; 
+}
+
+.mountain-weather img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.2));
+}
