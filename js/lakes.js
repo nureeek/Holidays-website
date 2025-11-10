@@ -102,7 +102,7 @@ $(document).ready(function () {
     });
   }
 
-  const audioUrl = '../sounds/click.mp3'; 
+  const audioUrl = 'sounds/click.mp3'; 
   const preloadedAudio = new Audio(audioUrl);
   preloadedAudio.preload = 'auto';
 

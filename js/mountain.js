@@ -6,21 +6,21 @@
       coords: { lat: 43.09, lon: 77.06 },
       height: 4973,
       description: "Part of the Trans-Ili Alatau range, known for its alpine meadows and ski resorts.",
-      image: "../images/mountain1.jpg"
+      image: "images/mountain1.jpg"
     },
     {
       name: "Tien Shan",
       coords: { lat: 42.3, lon: 79.0 }, 
       height: 7439,
       description: "Known as the 'Celestial Mountains', they stretch across Central Asia.",
-      image: "../images/mountain2.jpg"
+      image: "images/mountain2.jpg"
     },
     {
       name: "Altai Mountains",
       coords: { lat: 49.95, lon: 85.9 },
       height: 4506,
       description: "Rich in biodiversity and cultural history, located in East Kazakhstan.",
-      image: "../images/mountain3.jpg"
+      image: "images/mountain3.jpg"
     }
   ];
   const mountainInfo = {
@@ -44,7 +44,7 @@
     `;
     mountainList.appendChild(card);
   });
-  const sound = new Audio("../sounds/nature.mp3");
+  const sound = new Audio("sounds/nature.mp3");
   const soundBtn = document.getElementById("sound-btn");
   const stopSoundBtn = document.getElementById("stop-sound-btn");
 

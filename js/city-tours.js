@@ -77,7 +77,7 @@ function initLazyLoad() {
     const img = $(this);
     const realSrc = img.attr("src");
     img.attr("data-src", realSrc);
-    img.attr("src", "../images/placeholder.jpg"); // must exist!
+    img.attr("src", "images/placeholder.jpg"); // must exist!
     img.css("opacity", "0"); // ensure fade-in starts from invisible
   });
 

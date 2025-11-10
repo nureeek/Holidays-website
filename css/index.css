@@ -1,7 +1,7 @@
 .hero {
   text-align: center;
   padding: 60px 20px;
-  background: url("../images/original.jpg") no-repeat center/cover;
+  background: url("images/original.jpg") no-repeat center/cover;
   color: #eeeeee;
   height: 400px;
 }
