@@ -1,3 +1,23 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.city-hero {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+header, .navbar {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.hero-box {
+  margin: 0 auto;
+  max-width: 1200px;      /* ширина бокса */
+  border-radius: 20px;    /* закруглённые углы */
+  overflow: hidden;       /* чтобы фон не выходил за границы */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
 .city-hero {
   height: 80vh;
   background: url("../images/image.png") center/cover no-repeat;
@@ -7,6 +27,7 @@
   position: relative;
   color: white;
   text-align: center;
+  margin-top: 0;  
 }
 
 .city-hero::after {

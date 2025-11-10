@@ -151,3 +151,36 @@ footer {
 #suggestions li:hover {
   background-color: #f0f0f0;
 }
+
+/* --- полностью убираем синие SVG Bootstrap --- */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none !important;
+}
+
+/* --- задаём свои белые стрелки для светлой и тёмной тем --- */
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+}
+
+/* левая стрелка */
+.carousel-control-prev-icon::after {
+  transform: rotate(-135deg);
+}
+
+/* правая стрелка */
+.carousel-control-next-icon::after {
+  transform: rotate(45deg);
+}
+
+/* — немного прозрачности при наведении */
+.carousel-control-prev:hover .carousel-control-prev-icon::after,
+.carousel-control-next:hover .carousel-control-next-icon::after {
+  opacity: 0.8;
+}
