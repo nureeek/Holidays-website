@@ -267,7 +267,7 @@ body.dark-theme .card .btn {
 }
 
 body.dark-theme .hero {
-  background: url("images/original.jpg") no-repeat center/cover;
+  background: url("../images/original.jpg") no-repeat center/cover;
   filter: brightness(0.6);
   color: #ffffff;
 }

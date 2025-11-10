@@ -20,7 +20,7 @@ header, .navbar {
 
 .city-hero {
   height: 80vh;
-  background: url("images/image.png") center/cover no-repeat;
+  background: url("../images/image.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,13 +160,3 @@ nav {
   }
 }
 
-/* Убираем белую полосу между navbar и hero */
-header, .navbar {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.hero {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
